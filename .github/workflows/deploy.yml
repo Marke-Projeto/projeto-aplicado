@@ -1,0 +1,27 @@
+name: Deploy Automático para AWS EC2
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aceder ao código do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar chave SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Executar Deploy Seguro no Servidor AWS
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@15.229.68.238.nip.io << 'EOF'
+            cd /home/ubuntu/projeto-aplicado || git clone https://github.com/Marke-Projeto/projeto-aplicado.git /home/ubuntu/projeto-aplicado
+            cd /home/ubuntu/projeto-aplicado
+            git pull origin main
+            sudo cp -r * /var/www/html/
+            sudo systemctl restart nginx
+          EOF
