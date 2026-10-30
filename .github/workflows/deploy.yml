@@ -18,7 +18,7 @@ jobs:
 
       - name: Executar Deploy Seguro no Servidor AWS
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@15.229.68.238.nip.io << 'EOF'
+          ssh -o StrictHostKeyChecking=no ubuntu@15.229.228.202.nip.io << 'EOF'
             cd /home/ubuntu/projeto-aplicado || git clone https://github.com/Marke-Projeto/projeto-aplicado.git /home/ubuntu/projeto-aplicado
             cd /home/ubuntu/projeto-aplicado
             git pull origin main
