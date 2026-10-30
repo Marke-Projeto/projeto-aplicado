@@ -34,7 +34,5 @@ Conforme exigido pelas diretrizes do projeto, foram implementadas mitigações p
 ---
 
 ## Credenciais de Demonstração
-
-Para fins de teste e avaliação da aplicação:
-* **Utilizador:** `admin`
-* **Palavra-passe:** `senha123`
+Em conformidade com as boas práticas de Secure by Design e o Eixo 2 deste projeto (não exposição de credenciais em repositórios públicos):
+As credenciais de acesso para homologação/teste foram encaminhadas no relatório formal submetido no portal acadêmico.
