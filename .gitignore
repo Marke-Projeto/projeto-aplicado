@@ -1,5 +1,25 @@
+# Arquivos de ambiente e variáveis secretas
+.env
+.env.*
 *.env
-*.key
+
+# Chaves privadas e certificados
 *.pem
+*.key
+*.cer
+*.crt
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# Dependências e caches
 node_modules/
 .DS_Store
+Thumbs.db
+
+# Configurações locais de IDEs
+.idea/
+.vscode/
+*.swp
+*.swo

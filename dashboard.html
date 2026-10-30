@@ -2,17 +2,89 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Página Interna</title>
-</head>
-<body>
-    <h2>Bem-vindo à Área Restrita!</h2>
-    <p>Só consegue ver isto porque está autenticado.</p>
-    <button onclick="logout()">Sair (Logout)</button>
-    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
+    <title>Painel - Projeto Aplicado</title>
+    <style>
+        /* Oculta o corpo por padrão para prevenir renderização antes da validação de acesso */
+        body {
+            display: none;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            margin: 0;
+            padding: 2rem;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .dashboard-card {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #0f172a;
+            margin-top: 0;
+            font-size: 1.75rem;
+        }
+
+        p {
+            color: #475569;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .btn-logout {
+            background-color: #dc2626;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-logout:hover {
+            background-color: #b91c1c;
+        }
+    </style>
     <script>
-        if(sessionStorage.getItem("autenticado") !== "sim") {
-            window.location.href = "index.html";
+        // Verificação imediata no cabeçalho (OWASP A01:2025 - Broken Access Control)
+        if (sessionStorage.getItem("autenticado") !== "sim") {
+            window.location.replace("index.html");
+        } else {
+            // Apenas renderiza visualmente após confirmar sessão autenticada
+            document.addEventListener("DOMContentLoaded", function() {
+                document.body.style.display = "flex";
+                const usuarioLogado = sessionStorage.getItem("usuarioLogado") || "Utilizador";
+                const elementoUsuario = document.getElementById("nomeUsuario");
+                if (elementoUsuario) {
+                    // Renderização segura no DOM contra XSS (OWASP A05:2025)
+                    elementoUsuario.textContent = usuarioLogado;
+                }
+            });
         }
     </script>
+</head>
+<body>
+
+    <div class="dashboard-card">
+        <h1>Bem-vindo à Área Restrita!</h1>
+        <p>Olá, <strong id="nomeUsuario"></strong>! Acesso validado com sucesso. Só consegue ver esta página porque está autenticado no sistema com segurança.</p>
+        
+        <button class="btn-logout" id="btnLogout">Sair (Logout)</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -2,18 +2,114 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Login Seguro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
+    <title>Login - Projeto Aplicado</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #cbd5e1;
+            --error-color: #dc2626;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: #0f172a;
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 0.5rem;
+        }
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+        }
+        #mensagemErro {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            text-align: center;
+            min-height: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-    <h2>Acesso ao Sistema</h2>
-    <form id="loginForm">
-        <label>Utilizador:</label><br>
-        <input type="text" id="username" required><br><br>
-        <label>Palavra-passe:</label><br>
-        <input type="password" id="password" required><br><br>
-        <button type="submit">Entrar</button>
-    </form>
-    <p id="mensagemErro" style="color: red;"></p>
+    <div class="login-card">
+        <h2>Área Restrita</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Utilizador</label>
+                <input type="text" id="username" required placeholder="Digite o utilizador" autocomplete="username">
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Palavra-passe</label>
+                <input type="password" id="password" required placeholder="Digite a palavra-passe" autocomplete="current-password">
+            </div>
+            <button type="submit">Entrar</button>
+            <div id="mensagemErro"></div>
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
