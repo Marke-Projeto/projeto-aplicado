@@ -2,8 +2,8 @@
 const MAX_TENTATIVAS = 3;
 const TEMPO_BLOQUEIO_MS = 30000; // 30 segundos de penalização
 
-const HASH_USUARIO_AUTORIZADO = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"; // "admin"
-const HASH_SENHA_AUTORIZADA = "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251"; // "senha123"
+const HASH_USUARIO_AUTORIZADO = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
+const HASH_SENHA_AUTORIZADA = "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251";
 
 async function gerarHashSHA256(texto) {
     const encoder = new TextEncoder();
