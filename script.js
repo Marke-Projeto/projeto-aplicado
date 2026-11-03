@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         } else {
             // Mostra o corpo da página apenas se estiver autenticado
-            document.body.style.display = "block";
+            document.body.style.display = "";
         }
 
         // Vinculação do botão de Logout (CORRIGIDO para "logoutBtn" que está no seu HTML)
