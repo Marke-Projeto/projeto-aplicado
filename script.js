@@ -10,7 +10,7 @@ const TEMPO_BLOQUEIO_MS = 30000; // 30 segundos de penalização
  * Palavra-passe padrão: "senha123"
  */
 const HASH_USUARIO_AUTORIZADO = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918";
-const HASH_SENHA_AUTORIZADA = "55a5e9e78207b4df8699d60886fa070079463547b095d1a05bc719bb4e6cd251";
+const HASH_SENHA_AUTORIZADA = "7f915ee3cff0c54e4d6ba1422abc475a529271e82d8a240796697a57df6474a1";
 
 /**
  * Gera o hash SHA-256 de uma string utilizando a Web Crypto API nativa do navegador.
