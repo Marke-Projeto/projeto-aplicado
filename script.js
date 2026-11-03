@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const passwordInput = document.getElementById("password").value;
             const messageElement = document.getElementById("message");
 
-            // Função para gerar Hash SHA-256 via Web Crypto API
+            // Gerar Hash SHA-256 via Web Crypto API
             const encoder = new TextEncoder();
             const data = encoder.encode(passwordInput);
             const hashBuffer = await crypto.subtle.digest("SHA-256", data);
