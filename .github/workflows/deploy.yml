@@ -19,10 +19,21 @@ jobs:
       - name: Executar Deploy Seguro no Servidor AWS
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@15.229.228.202.nip.io << 'EOF'
-          cd /home/ubuntu/projeto-aplicado || git clone https://github.com/Marke-Projeto/projeto-aplicado.git /home/ubuntu/projeto-aplicado
+          # Se a pasta não existir, clona o repositório
+          if [ ! -d "/home/ubuntu/projeto-aplicado" ]; then
+            git clone https://github.com/Marke-Projeto/projeto-aplicado.git /home/ubuntu/projeto-aplicado
+          fi
+          
+          # Entra na pasta do projeto
           cd /home/ubuntu/projeto-aplicado
+          
+          # Atualiza o código para a versão mais recente
           git fetch origin main
           git reset --hard origin/main
-          sudo cp -r * /var/www/html/
+          
+          # Copia os arquivos do site para a pasta do Nginx
+          sudo cp -r *.html *.css *.js /var/www/html/ 2>/dev/null || sudo cp -r * /var/www/html/
+          
+          # Reinicia o Nginx para aplicar as mudanças
           sudo systemctl restart nginx
           EOF

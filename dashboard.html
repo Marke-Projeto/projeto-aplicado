@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
     <title>Painel do Utilizador - Projeto Aplicado</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <style>
+        body { display: none; } /* Oculto por padrão (A01) */
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Painel Interno Seguro</h1>
-            <button id="logoutBtn" type="button">Encerrar Sessão</button>
+            <button id="logoutBtn" type="button">Encerrar Sessão</button> <!-- Mantenha este ID -->
         </header>
         <main>
             <h2>Bem-vindo à Área Restrita</h2>
