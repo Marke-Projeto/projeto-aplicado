@@ -1,11 +1,17 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSP adicionada conforme descrito no README (A05) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
     <title>Painel do Utilizador - Projeto Aplicado</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <style>
+        /* Ocultação preventiva do conteúdo (A01) */
+        body { display: none; }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -19,4 +25,4 @@
         </main>
     </div>
 </body>
-</html>
+</html>       
