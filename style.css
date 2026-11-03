@@ -116,3 +116,16 @@ button:disabled {
 #logoutBtn:hover {
     background-color: #b91c1c;
 }
+/* Centralizar o conteúdo da página interna (Dashboard) */
+main {
+    text-align: center;
+}
+
+main h2 {
+    margin-bottom: 1rem;
+}
+
+main p {
+    color: #475569;
+    line-height: 1.6;
+}
