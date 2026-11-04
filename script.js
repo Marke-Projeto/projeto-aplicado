@@ -65,6 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.style.display = "flex";
         }
 
+        // Exibição segura do utilizador autenticado (A05:2025 - Prevenção de XSS via textContent)
+        const userLogado = sessionStorage.getItem("usuarioLogado");
+        const elUsuario = document.getElementById("usuarioConectado");
+        if (elUsuario && userLogado) {
+            elUsuario.textContent = userLogado;
+        }
+
         // Vinculação do botão de Logout (CORRIGIDO para "logoutBtn" que está no seu HTML)
         const btnLogout = document.getElementById('logoutBtn');
         if (btnLogout) {
