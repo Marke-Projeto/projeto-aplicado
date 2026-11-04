@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline';">
     <title>Painel do Utilizador - Projeto Aplicado</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Guarda de Sessão Imediata no Cabeçalho (OWASP A01:2025)
+        if (sessionStorage.getItem("autenticado") !== "sim") {
+            window.location.replace("index.html");
+        }
+    </script>
     <script src="script.js" defer></script>
     <style>
         body { display: none; } /* Oculto por padrão (A01) */
@@ -19,6 +25,7 @@
         </header>
         <main>
             <h2>Bem-vindo à Área Restrita - Deploy Automático Validado!</h2>
+            <p>Utilizador autenticado: <strong id="usuarioConectado"></strong></p>
             <p>A sua autenticação foi validada com sucesso através de hashing criptográfico SHA-256.</p>
         </main>
     </div>
