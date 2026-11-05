@@ -63,7 +63,7 @@ graph TD
 * **Plataforma e Visibilidade:** Repositório público hospedado no GitHub sob a organização/usuário [`Marke-Projeto/projeto-aplicado`](https://github.com/Marke-Projeto/projeto-aplicado).
 * **Autenticação Segura:** Todas as operações de *commit* e *push* são autenticadas por meio de chave assimétrica **SSH (Ed25519)** associada à conta do GitHub.
 * **Prevenção de Vazamento de Dados:**
-  * O arquivo [`.gitignore`](file:///home/fabianamadelinedasilvabezerra/projeto-aplicado/.gitignore) foi rigorosamente configurado para barrar o envio de arquivos de ambiente (`.env`), chaves privadas (`*.pem`, `*.key`, `id_rsa`, `id_ed25519`), certificados, caches e configurações locais de IDEs.
+  * O arquivo [`.gitignore`](.gitignore) foi rigorosamente configurado para barrar o envio de arquivos de ambiente (`.env`), chaves privadas (`*.pem`, `*.key`, `id_rsa`, `id_ed25519`), certificados, caches e configurações locais de IDEs.
   * O código-fonte **não contém senhas ou chaves de API em texto claro**, em conformidade estrita com as diretrizes do edital.
 
 ---
@@ -71,6 +71,9 @@ graph TD
 ## 💻 Eixo 3: Desenvolvimento Web e Mitigações OWASP Top 10:2025
 
 A aplicação foi construída com foco em **Secure by Design** e **Secure by Default**, utilizando **HTML5, CSS3 e JavaScript puro**, desenvolvida e auditada na IDE **Google Antigravity**. A solução atende integralmente ao requisito de autenticação e proteção em modelo *front-end*:
+
+> [!NOTE]
+> **Contexto de Segurança e Escopo do Protótipo:** Em conformidade com as diretrizes do Eixo 3 (que aceita soluções desenvolvidas exclusivamente no Front-end sem exigência de backend ou banco de dados), as mitigações foram desenhadas e aplicadas no lado do cliente a nível de **protótipo didático/demonstrativo**, demonstrando a correta aplicação de padrões defensivos (*Secure by Design*) na camada de apresentação.
 
 * **Estrutura Mínima Entregue:**
   1. **Tela de Login (`index.html`):** Formulário protegido com validação de credenciais, rate limiting e mensagens neutras.
@@ -93,7 +96,7 @@ A aplicação foi construída com foco em **Secure by Design** e **Secure by Def
   * **Sanitização de Entidades HTML:** Função `sanitizar()` em `script.js` que isola entradas de texto em elementos em memória para neutralizar tags maliciosas (`<script>`, `onerror`, etc.).
   * **Manipulação Segura do DOM (`textContent`):** Todas as atualizações dinâmicas de interface — incluindo a exibição de mensagens de erro/bloqueio (`#mensagemErro`) e o nome do usuário autenticado no painel (`#usuarioConectado`) — utilizam estritamente a propriedade `textContent`, garantindo que o motor do navegador interprete os dados como texto plano inofensivo e nunca como HTML executável.
 
-#### 3. A07:2025 - Identification and Authentication Failures (Falhas de Identificação e Autenticação)
+#### 3. A07:2025 - Authentication Failures (Falhas de Autenticação)
 * **Problema mitigado:** Ataques de força bruta automatizada (*brute force*), ataques de dicionário e enumeração de usuários (*User Enumeration*).
 * **Implementação no código:**
   * **Hashing Criptográfico com Web Crypto API:** Nenhuma credencial em texto claro é armazenada no código-fonte. O sistema calcula em tempo real o digest criptográfico **SHA-256** utilizando a API nativa do navegador (`crypto.subtle.digest('SHA-256', ...)`) e compara com os hashes autorizados esperados.
@@ -114,7 +117,7 @@ O ciclo de vida da aplicação é 100% automatizado através do **GitHub Actions
    * Conecta-se ao servidor de produção AWS EC2 via SSH.
    * Sincroniza o repositório (`git fetch` / `git reset --hard origin/main`).
    * Publica os arquivos web no diretório do Nginx (`/var/www/html/`).
-   * Reinicia o serviço Nginx (`sudo systemctl restart nginx`) de forma graciosa.
+   * Recarrega o serviço Nginx de forma graciosa (`sudo systemctl reload nginx`), sem interrupção de conexões ativas.
 
 ---
 

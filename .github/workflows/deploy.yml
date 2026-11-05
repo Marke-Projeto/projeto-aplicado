@@ -34,6 +34,6 @@ jobs:
           # Copia os arquivos do site para a pasta do Nginx
           sudo cp -r *.html *.css *.js /var/www/html/ 2>/dev/null || sudo cp -r * /var/www/html/
           
-          # Reinicia o Nginx para aplicar as mudanças
-          sudo systemctl restart nginx
+          # Recarrega o Nginx de forma graciosa para aplicar as mudanças
+          sudo systemctl reload nginx
           EOF

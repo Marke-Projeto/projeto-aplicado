@@ -1,4 +1,4 @@
-// Configurações de Segurança e Controlo de Tentativas (OWASP A07:2025)
+// Configurações de Segurança e Controlo de Tentativas (OWASP A07:2025 - Authentication Failures)
 const MAX_TENTATIVAS = 3;
 const TEMPO_BLOQUEIO_MS = 30000; // 30 segundos de penalização
 
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // --- A07:2025 - Autenticação & Rate Limiting no Login ---
+    // --- A07:2025 - Authentication Failures & Rate Limiting no Login ---
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
         verificarBloqueio();
