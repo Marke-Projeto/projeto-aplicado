@@ -117,7 +117,7 @@ O ciclo de vida da aplicação é 100% automatizado através do **GitHub Actions
    * Conecta-se ao servidor de produção AWS EC2 via SSH.
    * Sincroniza o repositório (`git fetch` / `git reset --hard origin/main`).
    * Publica os arquivos web no diretório do Nginx (`/var/www/html/`).
-   * Recarrega o serviço Nginx de forma graciosa (`sudo systemctl reload nginx`), sem interrupção de conexões ativas.
+   * Recarrega o serviço Nginx (`sudo systemctl reload nginx`) sem interrupção de conexões ativas (zero downtime).
 
 ---
 
