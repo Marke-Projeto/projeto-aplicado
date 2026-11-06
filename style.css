@@ -108,14 +108,18 @@ button:disabled {
 
 #logoutBtn {
     width: auto;
-    padding: 0.5rem 1rem;
-    background-color: #0f172a;
-    color: white;
+    padding: 0.45rem 0.95rem;
+    background-color: transparent;
+    color: #0f172a;
+    border: 1.5px solid #0f172a;
     font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
 }
 
 #logoutBtn:hover {
-    background-color: #1e293b;
+    background-color: #0f172a;
+    color: white;
 }
 /* Centralizar o conteúdo da página interna (Dashboard) */
 main {
